@@ -1,8 +1,6 @@
 
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 
 const Contact = () => {
   const contactInfo = [
@@ -43,9 +41,9 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="lg:col-span-1">
+          <div>
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 h-fit">
               <h3 className="text-2xl font-bold text-slate-900 mb-8">Contact Information</h3>
               
@@ -83,95 +81,14 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form & Map */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Contact Form */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
-              <h3 className="text-2xl font-bold text-slate-900 mb-8">Send Us a Message</h3>
-              
-              <form className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      First Name *
-                    </label>
-                    <Input placeholder="John" className="border-slate-300 focus:border-amber-500" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      Last Name *
-                    </label>
-                    <Input placeholder="Doe" className="border-slate-300 focus:border-amber-500" />
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      Email *
-                    </label>
-                    <Input 
-                      type="email" 
-                      placeholder="john@example.com" 
-                      className="border-slate-300 focus:border-amber-500" 
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      Phone
-                    </label>
-                    <Input 
-                      type="tel" 
-                      placeholder="(555) 123-4567" 
-                      className="border-slate-300 focus:border-amber-500" 
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Service Type
-                  </label>
-                  <select className="w-full px-3 py-2 border border-slate-300 rounded-md focus:border-amber-500 focus:outline-none">
-                    <option value="">Select a service</option>
-                    <option value="residential">Residential Roofing</option>
-                    <option value="commercial">Commercial Roofing</option>
-                    <option value="repair">Emergency Repair</option>
-                    <option value="gutter">Gutter Systems</option>
-                    <option value="consultation">Consultation</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Message *
-                  </label>
-                  <Textarea 
-                    placeholder="Please describe your roofing needs or tell us about your project..."
-                    rows={5}
-                    className="border-slate-300 focus:border-amber-500"
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold"
-                >
-                  Send Message
-                </Button>
-              </form>
-            </div>
-
-            {/* Map Placeholder */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Our Location</h3>
-              <div className="bg-slate-200 rounded-xl h-64 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-slate-400 mx-auto mb-4" />
-                  <p className="text-slate-600">Interactive map would be integrated here</p>
-                  <p className="text-slate-500 text-sm">123 Elite Roofing Plaza, Metropolitan Area</p>
-                </div>
+          {/* Map */}
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">Our Location</h3>
+            <div className="bg-slate-200 rounded-xl h-96 flex items-center justify-center">
+              <div className="text-center">
+                <MapPin className="h-12 w-12 text-slate-400 mx-auto mb-4" />
+                <p className="text-slate-600">Interactive map would be integrated here</p>
+                <p className="text-slate-500 text-sm">123 Elite Roofing Plaza, Metropolitan Area</p>
               </div>
             </div>
           </div>

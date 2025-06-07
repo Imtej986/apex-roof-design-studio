@@ -76,13 +76,13 @@ const WhyChooseUs = () => {
           {stats.map((stat, index) => (
             <div 
               key={index}
-              className={`group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/20 ${
+              className={`group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-200 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/30 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
               }`}
               style={{ transitionDelay: `${500 + index * 100}ms` }}
             >
               <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 bg-amber-500 rounded-xl flex items-center justify-center group-hover:bg-amber-400 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-500/50">
+                <div className="w-14 h-14 bg-amber-500 rounded-xl flex items-center justify-center group-hover:bg-amber-400 transition-all duration-200 group-hover:shadow-lg group-hover:shadow-amber-500/50">
                   <stat.icon className="h-7 w-7 text-white" />
                 </div>
                 <div className="text-right">
@@ -101,16 +101,16 @@ const WhyChooseUs = () => {
         }`}>
           <h3 className="text-2xl font-bold text-white mb-8">Certified & Trusted</h3>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20 hover:bg-white/20 hover:shadow-lg hover:shadow-white/20 transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20 hover:bg-white/20 hover:shadow-lg hover:shadow-white/20 transition-all duration-200">
               <span className="text-white font-semibold">GAF Master Elite</span>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20 hover:bg-white/20 hover:shadow-lg hover:shadow-white/20 transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20 hover:bg-white/20 hover:shadow-lg hover:shadow-white/20 transition-all duration-200">
               <span className="text-white font-semibold">CertainTeed SELECT</span>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20 hover:bg-white/20 hover:shadow-lg hover:shadow-white/20 transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20 hover:bg-white/20 hover:shadow-lg hover:shadow-white/20 transition-all duration-200">
               <span className="text-white font-semibold">NRCA Member</span>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20 hover:bg-white/20 hover:shadow-lg hover:shadow-white/20 transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20 hover:bg-white/20 hover:shadow-lg hover:shadow-white/20 transition-all duration-200">
               <span className="text-white font-semibold">BBB A+ Rating</span>
             </div>
           </div>

@@ -58,14 +58,14 @@ const Navbar = () => {
 
             {/* Contact Info & CTA */}
             <div className="hidden lg:flex items-center space-x-4">
-              <div className="flex items-center space-x-4 text-sm text-slate-300">
-                <div className="flex items-center space-x-1 hover:text-white transition-colors">
+              <div className="flex items-center space-x-4 text-sm">
+                <div className="flex items-center space-x-1 text-amber-400 hover:text-amber-300 transition-colors">
                   <Phone className="h-4 w-4" />
-                  <span>(555) 123-4567</span>
+                  <span className="font-medium">(555) 123-4567</span>
                 </div>
-                <div className="flex items-center space-x-1 hover:text-white transition-colors">
+                <div className="flex items-center space-x-1 text-amber-400 hover:text-amber-300 transition-colors">
                   <Mail className="h-4 w-4" />
-                  <span>info@eliteroofing.com</span>
+                  <span className="font-medium">info@eliteroofing.com</span>
                 </div>
               </div>
               <Button className="bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold shadow-lg hover:shadow-amber-500/25 transition-all duration-300">
