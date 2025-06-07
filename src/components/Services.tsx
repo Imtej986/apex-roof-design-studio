@@ -1,8 +1,11 @@
 
 import { Home, Building, Wrench, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Services = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   const services = [
     {
       icon: Home,
@@ -35,10 +38,18 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-white">
+    <section 
+      id="services" 
+      ref={ref}
+      className={`py-24 bg-white transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 delay-300 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Comprehensive{" "}
             <span className="text-amber-500">Roofing Solutions</span>
@@ -54,19 +65,22 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="group bg-gradient-to-br from-slate-50 to-white rounded-2xl overflow-hidden border border-slate-200 hover:border-amber-200 transition-all duration-300 hover:shadow-2xl"
+              className={`group bg-gradient-to-br from-slate-50 to-white rounded-2xl overflow-hidden border border-slate-200 hover:border-amber-200 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/20 hover:scale-105 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+              }`}
+              style={{ transitionDelay: `${500 + index * 150}ms` }}
             >
               {/* Service Image */}
               <div className="relative h-64 overflow-hidden">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
                 
                 {/* Icon */}
-                <div className="absolute top-6 left-6 w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center">
+                <div className="absolute top-6 left-6 w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center group-hover:bg-amber-600 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-500/50">
                   <service.icon className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -80,7 +94,7 @@ const Services = () => {
                 <ul className="space-y-2 mb-8">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-slate-600">
-                      <div className="w-2 h-2 bg-amber-500 rounded-full mr-3" />
+                      <div className="w-2 h-2 bg-amber-500 rounded-full mr-3 group-hover:shadow-lg group-hover:shadow-amber-500/50 transition-all duration-300" />
                       {feature}
                     </li>
                   ))}
@@ -88,7 +102,7 @@ const Services = () => {
 
                 <Button 
                   variant="outline" 
-                  className="group-hover:bg-amber-500 group-hover:text-white group-hover:border-amber-500 transition-all duration-300"
+                  className="group-hover:bg-amber-500 group-hover:text-white group-hover:border-amber-500 group-hover:shadow-lg group-hover:shadow-amber-500/30 transition-all duration-300"
                 >
                   Learn More
                 </Button>

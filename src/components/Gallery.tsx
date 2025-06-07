@@ -1,9 +1,11 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const { ref, isVisible } = useScrollAnimation();
 
   const filters = [
     { id: "all", label: "All Projects" },
@@ -68,10 +70,18 @@ const Gallery = () => {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section id="gallery" className="py-24 bg-slate-50">
+    <section 
+      id="gallery" 
+      ref={ref}
+      className={`py-24 bg-slate-50 transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 delay-300 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Our{" "}
             <span className="text-amber-500">Portfolio</span>
@@ -88,10 +98,10 @@ const Gallery = () => {
                 key={filter.id}
                 variant={activeFilter === filter.id ? "default" : "outline"}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`${
+                className={`transition-all duration-300 hover:scale-105 ${
                   activeFilter === filter.id
-                    ? "bg-amber-500 hover:bg-amber-600 text-white"
-                    : "text-slate-600 hover:text-slate-900 hover:border-amber-500"
+                    ? "bg-amber-500 hover:bg-amber-600 text-white shadow-lg shadow-amber-500/30"
+                    : "text-slate-600 hover:text-slate-900 hover:border-amber-500 hover:shadow-lg hover:shadow-amber-500/20"
                 }`}
               >
                 {filter.label}
@@ -105,8 +115,10 @@ const Gallery = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className={`group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-amber-500/20 transition-all duration-700 hover:scale-105 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+              }`}
+              style={{ transitionDelay: `${500 + index * 100}ms` }}
             >
               <div className="relative overflow-hidden">
                 <img
@@ -132,10 +144,12 @@ const Gallery = () => {
         </div>
 
         {/* View More Button */}
-        <div className="text-center mt-16">
+        <div className={`text-center mt-16 transition-all duration-1000 delay-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <Button 
             size="lg" 
-            className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4"
+            className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-amber-500/30"
           >
             View All Projects
           </Button>

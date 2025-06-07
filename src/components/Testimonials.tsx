@@ -1,7 +1,10 @@
 
 import { Star, Quote } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Testimonials = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   const testimonials = [
     {
       name: "Michael Thompson",
@@ -30,10 +33,17 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section 
+      ref={ref}
+      className={`py-24 bg-white transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 delay-300 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             What Our{" "}
             <span className="text-amber-500">Clients Say</span>
@@ -49,17 +59,20 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 border border-slate-200 hover:border-amber-200 transition-all duration-300 hover:shadow-xl group"
+              className={`bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 border border-slate-200 hover:border-amber-200 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/20 group hover:scale-105 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+              }`}
+              style={{ transitionDelay: `${500 + index * 150}ms` }}
             >
               {/* Quote Icon */}
-              <div className="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-600 transition-colors">
+              <div className="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-600 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-500/50">
                 <Quote className="h-6 w-6 text-white" />
               </div>
 
               {/* Rating */}
               <div className="flex items-center mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-amber-400 fill-current" />
+                  <Star key={i} className="h-5 w-5 text-amber-400 fill-current group-hover:scale-110 transition-transform duration-300" style={{ transitionDelay: `${i * 50}ms` }} />
                 ))}
               </div>
 
@@ -73,7 +86,7 @@ const Testimonials = () => {
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover mr-4"
+                  className="w-12 h-12 rounded-full object-cover mr-4 group-hover:scale-110 transition-transform duration-300"
                 />
                 <div>
                   <h4 className="font-semibold text-slate-900">{testimonial.name}</h4>
@@ -86,23 +99,25 @@ const Testimonials = () => {
         </div>
 
         {/* Trust Badges */}
-        <div className="mt-20 text-center">
-          <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+        <div className={`mt-20 text-center transition-all duration-1000 delay-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
+          <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:shadow-2xl hover:shadow-slate-500/10 transition-all duration-500">
             <h3 className="text-2xl font-bold text-slate-900 mb-6">Trusted by Industry Leaders</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
-              <div className="text-center">
+              <div className="text-center hover:opacity-100 transition-opacity duration-300">
                 <div className="text-3xl font-bold text-slate-900">500+</div>
                 <div className="text-sm text-slate-600">5-Star Reviews</div>
               </div>
-              <div className="text-center">
+              <div className="text-center hover:opacity-100 transition-opacity duration-300">
                 <div className="text-3xl font-bold text-slate-900">98%</div>
                 <div className="text-sm text-slate-600">Referral Rate</div>
               </div>
-              <div className="text-center">
+              <div className="text-center hover:opacity-100 transition-opacity duration-300">
                 <div className="text-3xl font-bold text-slate-900">A+</div>
                 <div className="text-sm text-slate-600">BBB Rating</div>
               </div>
-              <div className="text-center">
+              <div className="text-center hover:opacity-100 transition-opacity duration-300">
                 <div className="text-3xl font-bold text-slate-900">24/7</div>
                 <div className="text-sm text-slate-600">Support</div>
               </div>
